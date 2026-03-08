@@ -64,7 +64,7 @@ So the embed/project pattern generalises both the standard acceptance model and 
 
 The literature is inconsistent. Three approaches appear:
 
-**Approach 1: Permanent boundary (Kutrib 2009).** The boundary `#` is not a cell state — it's a fixed symbol that appears as neighbor input for border cells but can never be produced by δ. The transition function has domain $(S \cup \lbrace \mathtt{\char`\#} \rbrace)^3 \to S$.
+**Approach 1: Permanent boundary (Kutrib 2009).** The boundary `#` is not a cell state — it's a fixed symbol that appears as neighbor input for border cells but can never be produced by δ. The transition function has domain (S ∪ {#})³ → S.
 
 **Approach 2: Quiescent border (Smith 1972, Martin 1994).** The border state is in $S$ and satisfies $\delta(q, q, q) = q$.
 
