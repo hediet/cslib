@@ -64,7 +64,7 @@ So the embed/project pattern generalises both the standard acceptance model and 
 
 The literature is inconsistent. Three approaches appear:
 
-**Approach 1: Permanent boundary (Kutrib 2009).** The boundary `#` is not a cell state — it's a fixed symbol that appears as neighbor input for border cells but can never be produced by δ. The transition function has domain $(S \cup \lbrace\text{\#}\rbrace)^3 \to S$.
+**Approach 1: Permanent boundary (Kutrib 2009).** The boundary `#` is not a cell state — it's a fixed symbol that appears as neighbor input for border cells but can never be produced by δ. The transition function has domain $(S \cup \lbrace \mathtt{\char`\#} \rbrace)^3 \to S$.
 
 **Approach 2: Quiescent border (Smith 1972, Martin 1994).** The border state is in $S$ and satisfies $\delta(q, q, q) = q$.
 
@@ -320,10 +320,10 @@ Our formalisation is the first to mechanise CA **language recognition** results 
 
 | Aspect | Kutrib (2009) Standard | Our Lean 4 Formalisation | Relationship |
 |---|---|---|---|
-| Tuple | $\langle S, \delta, \text{\#}, A, F \rangle$ | `CellAutomaton α β Q` with `δ`, `embed`, `project` | Ours is more general (transducer view) |
+| Tuple | ⟨S, δ, #, A, F⟩ | `CellAutomaton α β Q` with `δ`, `embed`, `project` | Ours is more general (transducer view) |
 | Input alphabet | $A \subseteq S$ | `embed : α → Q` | Standard is special case |
 | Output | $F \subseteq S$ (binary) | `project : Q → β` (general) | Standard is special case ($\beta = \text{Bool}$) |
-| Boundary | $\text{\#} \notin S$, permanent | `embed(none)`, no constraints | Ours is more general; Results 4–5 prove WLOG |
+| Boundary | # ∉ S, permanent | `embed(none)`, no constraints | Ours is more general; Results 4–5 prove WLOG |
 | Quiescent | Assumed or implicit | `Quiescent q ↔ δ(q,q,q) = q` — explicit predicate | Same definition, stated explicitly |
 | Dead | Used informally | `Dead q ↔ ∀ a c, δ(a,q,c) = q` — explicit predicate | Same notion, named and proved `Dead → Quiescent` |
 | Acceptance | Leftmost cell enters $F$ at time $\le t(n)$ | `AcceptanceScheme(t, p)` parameterised | Ours generalises (variable position) |
